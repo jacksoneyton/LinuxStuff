@@ -1,0 +1,29 @@
+function set-title () {  
+  if [[ -z "$ORIG" ]]; then  
+    ORIG=$PS1  
+  fi  
+  TITLE="\[\e]2;$*\a\]"  
+  PS1=${ORIG}${TITLE}  
+}
+
+set-title "New Title"
+
+
+
+To rename the title of a terminal tab in gnome-terminal, you can use the following command in the terminal:
+
+function set-title () {  
+  if [[ -z "$ORIG" ]]; then  
+    ORIG=$PS1  
+  fi  
+  TITLE="\[\e]2;$*\a\]"  
+  PS1=${ORIG}${TITLE}  
+}
+
+This function creates a new command set-title that takes a string argument and sets the terminal title to that string. You can use this command to set the title of your terminal tab by running:
+
+set-title "New Title"
+
+This will set the title of your terminal tab to “New Title”. The function works with spaces in the name too.
+
+Alternatively, you can use an escape sequence to set the title of your terminal tab. The Bash escape sequence to set the terminal title looks like this: \[\\e]2;new title\\a\], and to apply this title to your terminal window, all you have to do is modify its “Prompt String 1”, or PS1 variable, by adding this “set title” escape sequence after your current Prompt String 1, like this: PS1="${PS1}\[\e]2;new title\a\]".
